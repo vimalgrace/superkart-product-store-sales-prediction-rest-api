@@ -8,6 +8,8 @@ superkart_api = Flask("SuperKart Product Revenue Predictor")
 
 model = joblib.load("superkart_model.joblib")
 
+print(model)
+
 
 payload = {
   "Product_Weight": 12.66,
