@@ -51,7 +51,7 @@ st.subheader("Batch Prediction")
 uploaded_file = st.file_uploader("Upload a CSV file", type = ["csv"])
 
 if uploaded_file is not None:
-  if st.button("Predict", type = "primary"):
+  if st.button("Predict Batch", type = "primary"):
     response = requests.post(f"{BACKEND_URL}/v1/predictbatch", files = {"file": uploaded_file})
     if response.status_code == 200:
       predictions = response.json()

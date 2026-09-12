@@ -57,11 +57,7 @@ def predict_batch_product_revenue():
 
   predicted_product_revenue = model.predict(input_data).tolist()
 
-  product_ids = input_data["Product_Id"].tolist()
-
-  product_ids = [f"{i}_{product_ids[i]}" for i in range(len(product_ids))]
-
-  output_dict = dict(zip(product_ids, predicted_product_revenue))
+  output_dict = dict(zip(list(input_data.index), predicted_product_revenue))
 
   return output_dict
 
