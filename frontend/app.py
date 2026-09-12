@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 
 
-BACKEND_URL = "http://backend:7860"
+BACKEND_URL = "http://localhost:7860"
 
 st.title("SuperKart Product Revenue Predictor")
 
@@ -22,16 +22,16 @@ store_age_years = st.number_input("Enter Store Age in Years", min_value = 0.0, v
 product_type_category = st.selectbox("Select Product Type Category", ['Non Perishables', 'Perishables'])
 
 input_data = pd.DataFrame([{
-    "product_weight": product_weight,
-    "product_sugar_content": product_sugar_content,
-    "product_allocated_area": product_allocated_area,
-    "product_mrp": product_mrp,
-    "store_size": store_size,
-    "store_location_city_type": store_location_city_type,
-    "store_type": store_type,
-    "product_id_char": product_id_char,
-    "store_age_years": store_age_years,
-    "product_type_category": product_type_category
+    "Product_Weight": product_weight,
+    "Product_Sugar_Content": product_sugar_content,
+    "Product_Allocated_Area": product_allocated_area,
+    "Product_MRP": product_mrp,
+    "Store_Size": store_size,
+    "Store_Location_City_Type": store_location_city_type,
+    "Store_Type": store_type,
+    "Product_Id_char": product_id_char,
+    "Store_Age_Years": store_age_years,
+    "Product_Type_Category": product_type_category
 
 }])
 
