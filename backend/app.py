@@ -33,7 +33,7 @@ def predict_product_revenue():
         "Product_Id_char": product_data["Product_Id_char"],
         "Store_Age_Years": float(product_data["Store_Age_Years"]),
         "Product_Type_Category": product_data["Product_Type_Category"]
-        
+
     }
 
 
