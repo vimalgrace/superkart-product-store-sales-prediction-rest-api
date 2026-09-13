@@ -11,6 +11,8 @@ COPY requirements.txt .
 # Install Python dependencies listed in requirements.txt
 RUN pip3 install -r requirements.txt
 
+COPY . .
+
 # Copy all files from the current directory on the host to the container's /app directory
 COPY . .
 
