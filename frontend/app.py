@@ -1,15 +1,19 @@
+
+# Define the necessary libraries
 import streamlit as st
 import pandas as pd
 import requests
 
-
+# Base URL of the Flask backend
 BACKEND_URL = "http://localhost:7860"
 
+# Set the title of the Streamlit app
 st.title("SuperKart Product Revenue Predictor")
 
+# Section for online prediction
 st.subheader("Online Prediction")
 
-
+# Collect user input for product features
 product_weight = st.number_input("Enter Product Weight", value = 12.5)
 product_sugar_content = st.selectbox("Select Product Sugar Content", ["Low Sugar", "Regular", "No Sugar"])
 product_allocated_area = st.number_input("Enter Product Allocated Area", value = 0.05)
@@ -21,6 +25,7 @@ product_id_char = st.selectbox("Select Product ID char", ["FD", "NC", "DR"])
 store_age_years = st.number_input("Enter Store Age in Years", min_value = 0.0, value = 17.0)
 product_type_category = st.selectbox("Select Product Type Category", ['Non Perishables', 'Perishables'])
 
+# Convert user input into a DataFrame
 input_data = pd.DataFrame([{
     "Product_Weight": product_weight,
     "Product_Sugar_Content": product_sugar_content,
@@ -35,6 +40,7 @@ input_data = pd.DataFrame([{
 
 }])
 
+# Make prediction when the "Predict" button is clicked
 if st.button("Predict", type = "primary"):
   response = requests.post(f"{BACKEND_URL}/v1/predict", json = input_data.to_dict(orient = "records")[0])
 
@@ -45,11 +51,13 @@ if st.button("Predict", type = "primary"):
   else:
     st.error("Error occurred during prediction.")
 
-
+# Section for batch prediction
 st.subheader("Batch Prediction")
 
+# Allow users to upload a CSV file for batch prediction
 uploaded_file = st.file_uploader("Upload a CSV file", type = ["csv"])
 
+# Make batch prediction when the "Predict Batch" button is clicked
 if uploaded_file is not None:
   if st.button("Predict Batch", type = "primary"):
     response = requests.post(f"{BACKEND_URL}/v1/predictbatch", files = {"file": uploaded_file})
